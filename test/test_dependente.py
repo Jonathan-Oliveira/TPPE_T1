@@ -1,4 +1,4 @@
-from dependente import (Dependente, NomeEmBrancoException)
+from dependente import (Dependente, NomeEmBrancoException, DataInvalidaException)
 import pytest
 
 
@@ -60,7 +60,7 @@ class TestDependentes:
         [
             (
                 {"nome": "Pessoa", "dataNascimento": "29/02/2022"},
-                ("Data Invalida:  29/02/2022"),
+                ("Data Invalida: 29/02/2022"),
             ),
             (
                 {"nome": "alguem", "dataNascimento": "42/01/2000"},
@@ -72,8 +72,8 @@ class TestDependentes:
             ),
         ],
     )
-    def test_nome_em_branco(self, test_input, expected):
-        with pytest.raises(NomeEmBrancoException, match=expected):
+    def test_data_invalida(self, test_input, expected):
+        with pytest.raises(DataInvalidaException, match=expected):
             Dependente(
                 nome=test_input.get("nome"),
                 dataNascimento=test_input.get("dataNascimento")
