@@ -54,3 +54,27 @@ class TestDependentes:
                 nome=test_input.get("nome"),
                 dataNascimento=test_input.get("dataNascimento")
             )
+
+    @pytest.mark.parametrize(
+        "test_input, expected",
+        [
+            (
+                {"nome": "Pessoa", "dataNascimento": "29/02/2022"},
+                ("Data Invalida:  29/02/2022"),
+            ),
+            (
+                {"nome": "alguem", "dataNascimento": "42/01/2000"},
+                ("Data Invalida: 42/01/2000"),
+            ),
+            (
+                {"nome": "outro", "dataNascimento": "19/23/2001"},
+                ("Data Invalida: 19/23/2001"),
+            ),
+        ],
+    )
+    def test_nome_em_branco(self, test_input, expected):
+        with pytest.raises(NomeEmBrancoException, match=expected):
+            Dependente(
+                nome=test_input.get("nome"),
+                dataNascimento=test_input.get("dataNascimento")
+            )
