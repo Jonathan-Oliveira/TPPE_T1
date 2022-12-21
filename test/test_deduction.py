@@ -66,3 +66,12 @@ class TestDecucoes:
                 descricao="Previdencia privada",
                 valor=-100,
             )
+
+    def test_valores_invalidos_2(self):
+        with pytest.raises(
+            ValorDeducaoInvalidoException, match="Valor inválido: -3000"
+        ):
+            Deducao(
+                descricao="Previdencia privada",
+                valor=-3000,
+            )
