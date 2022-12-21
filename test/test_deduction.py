@@ -33,3 +33,7 @@ class TestDecucoes:
     def test_descricao_em_branco(self):
         with pytest.raises(DescricaoEmBrancoException):
             Deducao(descricao="", valor=100)
+
+    def test_descricao_em_branco2(self):
+        with pytest.raises(DescricaoEmBrancoException):
+            Deducao(descricao="   ", valor=100)
