@@ -1,4 +1,4 @@
 class Deducao:
-    def __init__(self, descricao, valor):
-        self.descricao = "Previdencia privada"
-        self.valor = 100
+    def __init__(self, descricao: str, valor: int) -> None:
+        self.descricao = descricao
+        self.valor = valor
