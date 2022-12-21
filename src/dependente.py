@@ -1,5 +1,7 @@
 class Dependente:
     def __init__(self, nome: str, dataNascimento: int) -> None:
+        if not nome or not nome.strip():
+            raise NomeEmBrancoException(nome)
         self.nome = nome
         self.dataNascimento = dataNascimento
 
