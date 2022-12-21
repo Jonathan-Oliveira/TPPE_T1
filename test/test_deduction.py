@@ -22,7 +22,6 @@ class TestDecucoes:
                 {"descricao": "Previdencia privada", "valor": 1000},
                 {"descricao": "Previdencia privada", "valor": 1000},
             ),
-            # pytest.param("6*9", 42, marks=pytest.mark.xfail),
         ],
     )
     def test_cadastro(self, test_input, expected):
@@ -48,7 +47,6 @@ class TestDecucoes:
                 {"descricao": None, "valor": 100},
                 ("Descrição em branco: None"),
             ),
-            # pytest.param("6*9", 42, marks=pytest.mark.xfail),
         ],
     )
     def test_descricao_em_branco(self, test_input, expected):
@@ -74,4 +72,22 @@ class TestDecucoes:
             Deducao(
                 descricao="Previdencia privada",
                 valor=-3000,
+            )
+
+    def test_valores_invalidos_3(self):
+        with pytest.raises(
+            ValorDeducaoInvalidoException, match="Valor inválido: None"
+        ):
+            Deducao(
+                descricao="Previdencia privada",
+                valor=None,
+            )
+
+    def test_valores_invalidos_4(self):
+        with pytest.raises(
+            ValorDeducaoInvalidoException, match="Valor inválido: abc"
+        ):
+            Deducao(
+                descricao="Previdencia privada",
+                valor="abc",
             )
