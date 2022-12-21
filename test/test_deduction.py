@@ -1,4 +1,8 @@
-from deducao import Deducao, DescricaoEmBrancoException
+from deducao import (
+    Deducao,
+    DescricaoEmBrancoException,
+    ValorDeducaoInvalidoException,
+)
 import pytest
 
 
@@ -52,4 +56,13 @@ class TestDecucoes:
             Deducao(
                 descricao=test_input.get("descricao"),
                 valor=test_input.get("valor"),
+            )
+
+    def test_valores_invalidos(self):
+        with pytest.raises(
+            ValorDeducaoInvalidoException, match="Valor inválido: -100"
+        ):
+            Deducao(
+                descricao="Previdencia privada",
+                valor=-100,
             )
