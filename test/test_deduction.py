@@ -56,38 +56,30 @@ class TestDecucoes:
                 valor=test_input.get("valor"),
             )
 
-    def test_valores_invalidos(self):
-        with pytest.raises(
-            ValorDeducaoInvalidoException, match="Valor inválido: -100"
-        ):
+    @pytest.mark.parametrize(
+        "test_input, expected",
+        [
+            (
+                {"descricao": "Previdencia privada", "valor": -100},
+                ("Valor inválido: -100"),
+            ),
+            (
+                {"descricao": "Previdencia privada", "valor": -3000},
+                ("Valor inválido: -3000"),
+            ),
+            (
+                {"descricao": "Previdencia privada", "valor": None},
+                ("Valor inválido: None"),
+            ),
+            (
+                {"descricao": "Previdencia privada", "valor": "abc"},
+                ("Valor inválido: abc"),
+            ),
+        ],
+    )
+    def test_valores_invalidos(self, test_input, expected):
+        with pytest.raises(ValorDeducaoInvalidoException, match=expected):
             Deducao(
-                descricao="Previdencia privada",
-                valor=-100,
-            )
-
-    def test_valores_invalidos_2(self):
-        with pytest.raises(
-            ValorDeducaoInvalidoException, match="Valor inválido: -3000"
-        ):
-            Deducao(
-                descricao="Previdencia privada",
-                valor=-3000,
-            )
-
-    def test_valores_invalidos_3(self):
-        with pytest.raises(
-            ValorDeducaoInvalidoException, match="Valor inválido: None"
-        ):
-            Deducao(
-                descricao="Previdencia privada",
-                valor=None,
-            )
-
-    def test_valores_invalidos_4(self):
-        with pytest.raises(
-            ValorDeducaoInvalidoException, match="Valor inválido: abc"
-        ):
-            Deducao(
-                descricao="Previdencia privada",
-                valor="abc",
+                descricao=test_input.get("descricao"),
+                valor=test_input.get("valor"),
             )
