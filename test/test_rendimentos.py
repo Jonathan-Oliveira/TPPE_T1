@@ -35,5 +35,9 @@ class TestRendimentos:
         with pytest.raises(DescricaoEmBrancoException):
             Rendimento(descricao="", valor=1200)
     
+    def test_descricao_em_branco2(self):
+        with pytest.raises(DescricaoEmBrancoException):
+            Rendimento(descricao="   ", valor=1200)
+    
 
 

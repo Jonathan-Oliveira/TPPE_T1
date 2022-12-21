@@ -1,5 +1,7 @@
 class Rendimento:
     def __init__(self, descricao, valor)->None:
+        if not descricao:
+            raise DescricaoEmBrancoException(descricao)
         self.descricao = descricao
         self.valor = valor
 
