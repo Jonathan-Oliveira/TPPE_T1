@@ -1,5 +1,4 @@
 from deducao import Deducao, DescricaoEmBrancoException
-
 import pytest
 
 
@@ -30,14 +29,27 @@ class TestDecucoes:
         assert deducao.valor == expected.get("valor")
         assert deducao.descricao == expected.get("descricao")
 
-    def test_descricao_em_branco(self):
-        with pytest.raises(DescricaoEmBrancoException):
-            Deducao(descricao="", valor=100)
-
-    def test_descricao_em_branco2(self):
-        with pytest.raises(DescricaoEmBrancoException):
-            Deducao(descricao="   ", valor=100)
-
-    def test_descricao_em_branco3(self):
-        with pytest.raises(DescricaoEmBrancoException):
-            Deducao(descricao=None, valor=100)
+    @pytest.mark.parametrize(
+        "test_input, expected",
+        [
+            (
+                {"descricao": "", "valor": 100},
+                ("Descrição em branco: "),
+            ),
+            (
+                {"descricao": "    ", "valor": 100},
+                ("Descrição em branco:    "),
+            ),
+            (
+                {"descricao": None, "valor": 100},
+                ("Descrição em branco: None"),
+            ),
+            # pytest.param("6*9", 42, marks=pytest.mark.xfail),
+        ],
+    )
+    def test_descricao_em_branco(self, test_input, expected):
+        with pytest.raises(DescricaoEmBrancoException, match=expected):
+            Deducao(
+                descricao=test_input.get("descricao"),
+                valor=test_input.get("valor"),
+            )
