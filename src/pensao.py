@@ -8,7 +8,7 @@ class Pensao:
 class ValorPensaoInvalidaException(Exception):
     def __init__(self, valor_pensao: int) -> None:
         self.valor_pensao = valor_pensao
-        super().__init__("Valor inválido: -100")
+        super().__init__ (f"Valor inválido: {self.valor_pensao}")
 
     def __str__(self) -> str:
         return f"Valor inválido: {self.valor_pensao}"
