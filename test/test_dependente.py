@@ -36,15 +36,15 @@ class TestDependentes:
         [
             (
                 {"nome": "", "dataNascimento": "19/10/1999"},
-                {"nome": "", "dataNascimento": "19/10/1999"},
+                ("Nome em branco: "),
             ),
             (
                 {"nome": "   ", "dataNascimento": "19/10/2000"},
-                {"nome": "   ", "dataNascimento": "19/10/2000"},
+                ("Nome em branco:    "),
             ),
             (
                 {"nome": None, "dataNascimento": "19/10/2042"},
-                {"nome": None, "dataNascimento": "19/10/2042"},
+                ("Nome em branco: None"),
             ),
         ],
     )
