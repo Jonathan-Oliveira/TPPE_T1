@@ -1,6 +1,6 @@
 class Deducao:
     def __init__(self, descricao: str, valor: int) -> None:
-        if not descricao:
+        if not descricao or not descricao.strip():
             raise DescricaoEmBrancoException(descricao)
         self.descricao = descricao
         self.valor = valor
