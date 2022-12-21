@@ -1,15 +1,15 @@
 class Deducao:
-    def __init__(self, descricao: str, valor: int) -> None:
+    def __init__(self, descricao: str, valor: float) -> None:
         if not descricao or not descricao.strip():
             raise DescricaoEmBrancoException(descricao)
-        if type(valor) != int or not valor or valor < 0:
+        if type(valor) != float or not valor or valor < 0:
             raise ValorDeducaoInvalidoException(valor)
         self.descricao = descricao
         self.valor = valor
 
 
 class ValorDeducaoInvalidoException(Exception):
-    def __init__(self, valor: int) -> None:
+    def __init__(self, valor: float) -> None:
         self.valor = valor
         super().__init__("Valor inválido: -100")
 
