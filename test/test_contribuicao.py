@@ -9,6 +9,7 @@ class TestContribuicao:
             (
                 {"descricao": "Aposentadoria", "valor": 100},
                 {"descricao": "Aposentadoria", "valor": 100},
+                
             ),
             
         ],
