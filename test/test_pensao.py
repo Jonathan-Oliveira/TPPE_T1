@@ -65,7 +65,7 @@ class TestDecucoes:
                 ("Valor inválido: -3000"),
             ),
             (
-                {"valor": None, "valor": None},
+                {"valor": 550, "valor": None},
                 ("Valor inválido: None"),
             ),
             (
@@ -77,6 +77,5 @@ class TestDecucoes:
     def test_valores_invalidos(self, test_input, expected):
         with pytest.raises(ValorPensaoInvalidaException, match=expected):
             Pensao(
-                descricao=test_input.get("descricao"),
                 valor=test_input.get("valor"),
             )
