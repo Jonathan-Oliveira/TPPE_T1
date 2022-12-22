@@ -11,7 +11,10 @@ class TestContribuicao:
                 {"descricao": "Aposentadoria", "valor": 100},
                 
             ),
-            
+            (
+                {"descricao": "Auxílio-alimentacao", "valor": 800},
+                {"descricao": "Auxílio-alimentacao", "valor": 800},
+            ),
         ],
     )
     def test_contribuicao(self, test_input, expected):
