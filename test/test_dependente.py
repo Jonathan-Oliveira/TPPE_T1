@@ -1,9 +1,8 @@
-from dependente import (Dependente, NomeEmBrancoException, DataInvalidaException)
+from dependente import Dependente, NomeEmBrancoException, DataInvalidaException
 import pytest
 
 
 class TestDependentes:
-
     @pytest.mark.parametrize(
         "test_input, expected",
         [
@@ -21,15 +20,13 @@ class TestDependentes:
             ),
         ],
     )
-
     def test_cadastro(self, test_input, expected):
         dependente = Dependente(
             nome=test_input.get("nome"),
-            dataNascimento=test_input.get("dataNascimento")
+            dataNascimento=test_input.get("dataNascimento"),
         )
         assert dependente.nome == expected.get("nome")
         assert dependente.dataNascimento == expected.get("dataNascimento")
-
 
     @pytest.mark.parametrize(
         "test_input, expected",
@@ -52,7 +49,7 @@ class TestDependentes:
         with pytest.raises(NomeEmBrancoException, match=expected):
             Dependente(
                 nome=test_input.get("nome"),
-                dataNascimento=test_input.get("dataNascimento")
+                dataNascimento=test_input.get("dataNascimento"),
             )
 
     @pytest.mark.parametrize(
@@ -76,5 +73,5 @@ class TestDependentes:
         with pytest.raises(DataInvalidaException, match=expected):
             Dependente(
                 nome=test_input.get("nome"),
-                dataNascimento=test_input.get("dataNascimento")
+                dataNascimento=test_input.get("dataNascimento"),
             )

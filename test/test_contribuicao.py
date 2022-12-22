@@ -2,18 +2,18 @@ from contribuicao import Contribuicao
 
 import pytest
 
+
 class TestContribuicao:
     @pytest.mark.parametrize(
         "test_input, expected",
         [
             (
-                {"descricao": "Aposentadoria", "valor": 100},
-                {"descricao": "Aposentadoria", "valor": 100},
-                
+                {"descricao": "Aposentadoria", "valor": 100.40},
+                {"descricao": "Aposentadoria", "valor": 100.40},
             ),
             (
-                {"descricao": "Auxílio-alimentacao", "valor": 800},
-                {"descricao": "Auxílio-alimentacao", "valor": 800},
+                {"descricao": "Auxílio-alimentacao", "valor": 800.00},
+                {"descricao": "Auxílio-alimentacao", "valor": 800.00},
             ),
             (
                 {"descricao": "Auxílio-Transporte", "valor": 1000},
@@ -27,5 +27,4 @@ class TestContribuicao:
             valor=test_input.get("valor"),
         )
         assert contribuicao.valor == expected.get("valor")
-        assert contribuicao.descricao == expected.get("descricao") 
-        
+        assert contribuicao.descricao == expected.get("descricao")
