@@ -17,5 +17,7 @@ class TestContribuicao:
         contribuicao = Contribuicao(
             descricao=test_input.get("descricao"),
             valor=test_input.get("valor"),
-        ) 
+        )
+        assert contribuicao.valor == expected.get("valor")
+        assert contribuicao.descricao == expected.get("descricao") 
         
