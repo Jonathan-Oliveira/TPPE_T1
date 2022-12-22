@@ -1,4 +1,5 @@
-from rendimento import Rendimento, DescricaoEmBrancoException
+from rendimento import Rendimento, DescricaoEmBrancoException, ValorRendimentoInvalidoException
+import pytest
 
 class TestRendimentos:
 
@@ -41,7 +42,15 @@ class TestRendimentos:
 
     def test_descricao_em_branco3(self):
         with pytest.raises(DescricaoEmBrancoException):
-            Deducao(descricao=None, valor=800)
+            Rendimento(descricao=None, valor=800)
     
+    def test_valores_invalidos(self):
+        with pytest.raises(
+            ValorRendimentoInvalidoException, match="Valor inválido: -100"
+        ):
+            Rendimento(
+                descricao="Previdencia privada",
+                valor=-100,
+            )
 
 
