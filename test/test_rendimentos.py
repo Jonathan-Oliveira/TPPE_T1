@@ -49,8 +49,15 @@ class TestRendimentos:
             ValorRendimentoInvalidoException, match="Valor inválido: -100"
         ):
             Rendimento(
-                descricao="Previdencia privada",
+                descricao="Salario",
                 valor=-100,
             )
-
+    def test_valores_invalidos_2(self):
+        with pytest.raises(
+            ValorRendimentoInvalidoException, match="Valor inválido: -3000"
+        ):
+            Rendimento(
+                descricao="Salario",
+                valor=-2000,
+            )    
 
