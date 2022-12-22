@@ -11,16 +11,16 @@ class TestDecucoes:
         "test_input, expected",
         [
             (
-                {"descricao": "Previdencia privada", "valor": 100},
-                {"descricao": "Previdencia privada", "valor": 100},
+                {"descricao": "Previdencia privada", "valor": 100.0},
+                {"descricao": "Previdencia privada", "valor": 100.0},
             ),
             (
-                {"descricao": "Funpresp", "valor": 800},
-                {"descricao": "Funpresp", "valor": 800},
+                {"descricao": "Funpresp", "valor": 800.0},
+                {"descricao": "Funpresp", "valor": 800.0},
             ),
             (
-                {"descricao": "Previdencia privada", "valor": 1000},
-                {"descricao": "Previdencia privada", "valor": 1000},
+                {"descricao": "Previdencia privada", "valor": 1000.42},
+                {"descricao": "Previdencia privada", "valor": 1000.42},
             ),
         ],
     )
