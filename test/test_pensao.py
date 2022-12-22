@@ -61,7 +61,7 @@ class TestDecucoes:
                 ("Valor inválido: -100"),
             ),
             (
-                {"valor": None, "valor": -3000},
+                {"valor": 150, "valor": -3000},
                 ("Valor inválido: -3000"),
             ),
             (
