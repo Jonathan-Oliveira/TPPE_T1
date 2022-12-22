@@ -44,37 +44,30 @@ class TestRendimentos:
         with pytest.raises(DescricaoEmBrancoException):
             Rendimento(descricao=None, valor=800)
     
-    def test_valores_invalidos(self):
-        with pytest.raises(
-            ValorRendimentoInvalidoException, match="Valor inválido: -100"
-        ):
+    @pytest.mark.parametrize(
+        "test_input, expected",
+        [
+            (
+                {"descricao": "Salario", "valor": -100},
+                ("Valor inválido: -100"),
+            ),
+            (
+                {"descricao": "Salario", "valor": -3000},
+                ("Valor inválido: -3000"),
+            ),
+            (
+                {"descricao": "Salario", "valor": None},
+                ("Valor inválido: None"),
+            ),
+            (
+                {"descricao": "Salario", "valor": "abc"},
+                ("Valor inválido: abc"),
+            ),
+        ],
+    )
+    def test_valores_invalidos(self, test_input, expected):
+        with pytest.raises(ValorRendimentoInvalidoException, match=expected):
             Rendimento(
-                descricao="Salario",
-                valor=-100,
-            )
-    def test_valores_invalidos_2(self):
-        with pytest.raises(
-            ValorRendimentoInvalidoException, match="Valor inválido: -3000"
-        ):
-            Rendimento(
-                descricao="Salario",
-                valor=-2000,
-            )    
-
-    def test_valores_invalidos_3(self):
-        with pytest.raises(
-            ValorRendimentoInvalidoException, match="Valor inválido: None"
-        ):
-            Rendimento(
-                descricao="Salario",
-                valor=None,
-            )
-
-    def test_valores_invalidos_4(self):
-        with pytest.raises(
-            ValorRendimentoInvalidoException, match="Valor inválido: abc"
-        ):
-            Rendimento(
-                descricao="Salario",
-                valor="abc",
+                descricao=test_input.get("descricao"),
+                valor=test_input.get("valor"),
             )
