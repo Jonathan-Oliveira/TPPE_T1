@@ -2,7 +2,7 @@ class Rendimento:
     def __init__(self, descricao, valor)->None:
         if not descricao or not descricao.strip():
             raise DescricaoEmBrancoException(descricao)
-        if valor == -100:
+        if type(valor) != int or not valor or valor < 0:
             raise ValorRendimentoInvalidoException(valor)  
         self.descricao = descricao
         self.valor = valor

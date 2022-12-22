@@ -61,3 +61,20 @@ class TestRendimentos:
                 valor=-2000,
             )    
 
+    def test_valores_invalidos_3(self):
+        with pytest.raises(
+            ValorRendimentoInvalidoException, match="Valor inválido: None"
+        ):
+            Rendimento(
+                descricao="Salario",
+                valor=None,
+            )
+
+    def test_valores_invalidos_4(self):
+        with pytest.raises(
+            ValorRendimentoInvalidoException, match="Valor inválido: abc"
+        ):
+            Rendimento(
+                descricao="Salario",
+                valor="abc",
+            )
