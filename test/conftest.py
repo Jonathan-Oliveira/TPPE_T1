@@ -9,7 +9,6 @@ except Exception:
 
 from simulacao import Simulacao
 
-
 @pytest.fixture(scope="function")
 def simulacao():
     simulacao = Simulacao()

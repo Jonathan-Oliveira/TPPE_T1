@@ -29,10 +29,6 @@ def ler_opcao():
     return input("Digite a opção desejada: ")
 
 
-<<<<<<< Updated upstream
-def validate_user_input(user_input):
-    if user_input not in ["1", "2", "3", "4", "5", "6"]:
-=======
 def validar_entrada_do_usuario(user_input):
     if user_input not in [
         OPCAO_CADASTRAR_RENDIMENTO,
@@ -42,7 +38,6 @@ def validar_entrada_do_usuario(user_input):
         OPCAO_CALCULAR_IMPOSTO,
         OPCAO_SAIR,
     ]:
->>>>>>> Stashed changes
         print("Opção inválida")
         return False
     return True
