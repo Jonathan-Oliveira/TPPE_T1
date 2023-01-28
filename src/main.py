@@ -1,5 +1,15 @@
 from simulacao import Simulacao
 import time
+from constants import (
+    OPCAO_BATMAN,
+    OPCAO_CADASTRAR_RENDIMENTO,
+    OPCAO_CADASTRAR_DEDUCAO,
+    OPCAO_CADASTRAR_DEPENDENTE,
+    OPCAO_CADASTRAR_PENSAO,
+    OPCAO_CALCULAR_IMPOSTO,
+    OPCAO_SAIR,
+    BATMAN,
+)
 
 
 def mostra_menu():
@@ -19,8 +29,20 @@ def ler_opcao():
     return input("Digite a opção desejada: ")
 
 
+<<<<<<< Updated upstream
 def validate_user_input(user_input):
     if user_input not in ["1", "2", "3", "4", "5", "6"]:
+=======
+def validar_entrada_do_usuario(user_input):
+    if user_input not in [
+        OPCAO_CADASTRAR_RENDIMENTO,
+        OPCAO_CADASTRAR_DEDUCAO,
+        OPCAO_CADASTRAR_DEPENDENTE,
+        OPCAO_CADASTRAR_PENSAO,
+        OPCAO_CALCULAR_IMPOSTO,
+        OPCAO_SAIR,
+    ]:
+>>>>>>> Stashed changes
         print("Opção inválida")
         return False
     return True
@@ -42,9 +64,7 @@ def cadastrar_deducao(simulacao):
 
 def cadastrar_dependente(simulacao):
     nome = input("Digite o nome do dependente: ")
-    data_nascimento = input(
-        "Digite a data de nascimento do dependente (dia/mes/ano): "
-    )
+    data_nascimento = input("Digite a data de nascimento do dependente (dia/mes/ano): ")
     simulacao.adiciona_dependente(nome, data_nascimento)
     print("Dependente cadastrado com sucesso!")
 
@@ -60,18 +80,28 @@ def calcular_imposto(simulacao):
 
 
 def aplicar_opcao(opcao, simulacao):
-    if opcao == "1":
+    if opcao == OPCAO_CADASTRAR_RENDIMENTO:
         cadastrar_rendimento(simulacao)
-    elif opcao == "2":
+    elif opcao == OPCAO_CADASTRAR_DEDUCAO:
         cadastrar_deducao(simulacao)
-    elif opcao == "3":
+    elif opcao == OPCAO_CADASTRAR_DEPENDENTE:
         cadastrar_dependente(simulacao)
-    elif opcao == "4":
+    elif opcao == OPCAO_CADASTRAR_PENSAO:
         cadastrar_pensao(simulacao)
-    elif opcao == "5":
+    elif opcao == OPCAO_CALCULAR_IMPOSTO:
         calcular_imposto(simulacao)
+<<<<<<< Updated upstream
     elif opcao == "6":
         exit(0)
+=======
+    elif opcao == OPCAO_SAIR:
+        print("Saindo...")
+        time.sleep(1)
+        exit(0)
+    elif opcao == OPCAO_BATMAN:
+        print(BATMAN)
+        time.sleep(10)
+>>>>>>> Stashed changes
 
 
 if __name__ == "__main__":
@@ -80,9 +110,9 @@ if __name__ == "__main__":
         while True:
             mostra_menu()
             opcao = ler_opcao()
-            if not validate_user_input(opcao):
+            if not validar_entrada_do_usuario(opcao):
                 continue
-            if opcao == "6":
+            if opcao == OPCAO_SAIR:
                 print("Saindo...")
                 exit(0)
             else:
