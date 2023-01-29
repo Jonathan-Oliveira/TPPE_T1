@@ -85,18 +85,8 @@ def aplicar_opcao(opcao, simulacao):
         cadastrar_pensao(simulacao)
     elif opcao == OPCAO_CALCULAR_IMPOSTO:
         calcular_imposto(simulacao)
-<<<<<<< Updated upstream
     elif opcao == "6":
         exit(0)
-=======
-    elif opcao == OPCAO_SAIR:
-        print("Saindo...")
-        time.sleep(1)
-        exit(0)
-    elif opcao == OPCAO_BATMAN:
-        print(BATMAN)
-        time.sleep(10)
->>>>>>> Stashed changes
 
 
 if __name__ == "__main__":
