@@ -1,14 +1,12 @@
 from simulacao import Simulacao
 import time
 from constants import (
-    OPCAO_BATMAN,
     OPCAO_CADASTRAR_RENDIMENTO,
     OPCAO_CADASTRAR_DEDUCAO,
     OPCAO_CADASTRAR_DEPENDENTE,
     OPCAO_CADASTRAR_PENSAO,
     OPCAO_CALCULAR_IMPOSTO,
     OPCAO_SAIR,
-    BATMAN,
 )
 
 
