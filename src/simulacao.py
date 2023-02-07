@@ -3,7 +3,7 @@ from deducao import Deducao
 from dependente import Dependente
 from pensao import Pensao
 from contribuicao import Contribuicao
-from valores import *
+from valores import Valores
 from math import floor
 
 class Simulacao:
@@ -59,53 +59,14 @@ class Simulacao:
         return self.total_rendimento - self.total_deducoes
 
     def get_valor_imposto(self):
-        lim_faixa1 = 1903.98
-        lim_faixa2 = 922.67
-        lim_faixa3 = 924.40
-        lim_faixa4 = 913.63
-        lim_faixa5 = lim_faixa1 + lim_faixa2 + lim_faixa3 + lim_faixa4
-
-        cento_faixa2 = 0.075
-        cento_faixa3 = 0.15
-        cento_faixa4 = 0.225
-        cento_faixa5 = 0.275
-
         valor_liquido = self.get_valor_liquido()
         valor_imposto = 0
 
-        # --------------------
-
-        # if valor_liquido > lim_faixa5:
-        #     valor = valor_liquido - lim_faixa5
-        #     valor_imposto += valor * cento_faixa5
-    
-        valor_imposto += valores.get_valor_faixa5(self, valor_liquido, lim_faixa5, cento_faixa5)
-
-        # --------------------
-
-
-        # if valor_liquido > lim_faixa3 + lim_faixa2 + lim_faixa1:
-        #     valor = min(
-        #         (valor_liquido - lim_faixa3 + lim_faixa2 + lim_faixa1),
-        #         lim_faixa4,
-        #     )
-        #     valor_imposto += valor * cento_faixa4
-        valor_imposto += valores.get_valor_faixa4(self, valor_liquido, lim_faixa1, lim_faixa2, lim_faixa3, lim_faixa4, cento_faixa4)
-        # --------------------
-
-
-        # if valor_liquido > lim_faixa2 + lim_faixa1:
-        #   valor = min((valor_liquido - lim_faixa2 + lim_faixa1), lim_faixa3)
-        #   valor_imposto += valor * cento_faixa3
-        # 
-        valor_imposto += valores.get_valor_faixa3(self, valor_liquido, lim_faixa1, lim_faixa2, lim_faixa3, cento_faixa3)
-        # --------------------
-        # if valor_liquido > lim_faixa1:
-        #     valor = min((valor_liquido - lim_faixa1), lim_faixa2)
-        #     valor_imposto += valor * cento_faixa2
-        
-        valor_imposto += valores.get_valor_faixa2(self, valor_liquido, lim_faixa1, lim_faixa2, cento_faixa2)
-        # --------------------
+        valores = Valores()
+        valor_imposto += valores.get_valor_faixa5(valor_liquido)
+        valor_imposto += valores.get_valor_faixa4(valor_liquido)
+        valor_imposto += valores.get_valor_faixa3(valor_liquido)
+        valor_imposto += valores.get_valor_faixa2(valor_liquido)
 
         return valor_imposto
         
@@ -115,4 +76,3 @@ class Simulacao:
             floor(valor_imposto / self.get_total_rendimento() * 10000) / 100
         )
         return aliquotaEfetiva
-    
