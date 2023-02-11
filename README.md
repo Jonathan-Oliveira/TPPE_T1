@@ -12,7 +12,7 @@
 | 18/0103580 | Jonathan Jorge         |
 | 18/0103792 | Júlia Farias           |
 | 18/0105345 | Lucas Lima             |
-| 19/0048760 | Wellington Jhonathan   |
+| 19/0048760 | Wellington Jonathan   |
 
 ## Sobre
 
